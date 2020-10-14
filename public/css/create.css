@@ -1,0 +1,55 @@
+.contenedorprincpaldecreate{
+    padding-top: 350px;
+   
+    
+}
+.emailInput {
+    margin-top: 5px;
+    background-color:#d7f2fa;
+}
+.rowproduct-detail{
+    background-color: #FCFAFA;
+    text-align: center;
+    flex-direction: column;
+    padding: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    min-width: 10px ;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #707070;
+   
+}
+
+textarea{
+    width: 90% 
+}
+
+div.cargadeimagenproducto{
+    align-items: center;
+    text-align: center;
+}
+@media (min-width: 700px) {
+    .rowproduct-detail{
+        background-color: #FCFAFA;
+  
+        padding: 5px;
+        margin-left: 10%;
+        margin-right: 10%;
+ 
+       
+    }
+    textarea{
+        width: 50%; 
+        padding-top: 10px;
+        margin-top: 10px;
+        
+    }
+    div.col-12.col-md-6{
+        padding-bottom: 10px;
+    }
+   
+   
+    
+}
+

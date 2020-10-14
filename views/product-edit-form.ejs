@@ -1,0 +1,81 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partial/head', {title: 'EditProduct'}) %>
+<link rel="stylesheet" href="/css/register.css">
+
+<body>
+    <!-- Header -->
+    <%- include('./partial/header') %>
+    <div class="encierro">
+        <div class="loginContainer row no-wrap">
+            <main class="login-publi row no-wrap">
+                <div class="loginCompleto">
+                   
+                    
+                    <div class="form-container">
+                        <div class="loginTitulo">AGREGAR PRODUCTO</div>
+                        <form id= "trash"  class="loginForm" action="/lista/edit/<%= product.id %>" method="POST" autocomplete="off">
+                           
+                            <div class="field-group">
+                                <div class="username">
+									<label for="name" class="form-label">Nombre del producto:</label>
+									<input  class="emailInput" type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input" value="<%= product.name %>">
+                                </div>
+                                <div class="email"> 
+									<label for="price" class="form-label">Precio del producto:</label>
+									<input class="emailInput" type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input" value="<%= product.price %>">
+                                </div>
+                                <div class="password">
+									<label for="categoryId" class="form-label">Categoría:</label>
+									<select name="categoryId" id="categoryId" class="form-input">
+
+										<option value="">Elegí</option>
+										<% categories.forEach(function(category) {  %>  
+										<option value="<%=category.id%>"> <%=category.name%> </option>
+										<%})%>   
+									</select>
+                                </div>
+                                <div class="password">
+									<label for="categoryId" class="form-label">Marca:</label>
+									<select name="brandId" id="brandId" class="form-input">
+										<option value="">Elegí</option>
+										<% brands.forEach(function(brands) {  %>  
+										<option value="<%=brands.id%>"> <%=brands.name%> </option>
+										<%})%>  
+									</select>
+                                </div>
+                                   <div class="remember">
+									<label for="descripcion" class="form-label">Descipción:</label>
+									<textarea name="descripcion" id="descripcion" class="form-input"><%= product.descripcion %></textarea>
+                                    <div>
+                                    </div>
+                                </div>
+                                <div class="col2">
+									<button type="submit" class="buy-now-button">Guardar producto</button>
+								</div>
+                            </div>
+                        </form>
+                        <div class="logoFormulario">
+                            <img src="/img/numero.png" alt="logopP2Tec">
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+
+
+    <%- include('partial/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>		
+	<script src= "/js/sweetAlerts.js"></script>
+
+
+</body>
+
+</html>

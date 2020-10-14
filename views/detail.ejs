@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partial/head', {title: product.name }) %>
+<% 
+function round(val) {
+  return Math.round(val*100)/100;
+}
+%>
+<link rel="stylesheet" href="/css/detail.css">
+<link rel="stylesheet" href="/css/normalize.css">
+
+<body class="bodyProducto">
+    <%- include('./partial/header', {user}) %>
+    <div class="encierro">
+        <div class="especificado">
+            <div class="division row no-wrap">
+                <div class="cerraruno">
+                    <a href="/lista">
+                        <i class="fas fa-times-circle fa-2x"></i>
+                    </a>
+                </div>
+                <div class="imageContainer">
+                    <div class="vertical-center">
+                        <img src="/img/<%= product.image %>" alt="imagen" class="fotoProductoDetalle"
+                            data="/img/<%= product.image %>">
+                    </div>
+                </div>
+                <div class="descrip">
+                    <h2 class="nombreProducto fontsize-xlarge"> <%=product.name %> </h2>
+                    <ul>
+                        <li class="detalleProducto fontsize-medium"> <%=product.descripcion %> </li>
+                    </ul>
+                    <div class="precioProducto">ARS <%- round(product.price) %></div>
+                    <div class="metododepago">
+                        <div class="restodemetodos">
+                            <i class="fab fa-cc-visa fa-2x "></i>
+                            <i class="fab fa-cc-mastercard fa-2x "></i>
+                            <i class="fab fa-cc-amex fa-2x "></i>
+                        </div>
+                    </div>
+                    <% if (typeof user !== 'undefined' && user.rol === 1) {%>
+                    <div class="editar-eliminar">
+                        <a href="/lista/edit/<%= product.id %>" class="editButton">EDIT</a>
+                        <a class="delete">
+                            <form id= "trash" action="/lista/delete/<%= product.id %>" method="POST" style="display: inline-flex">
+                                <button  class="delete" type="submit" class="action-button delete">DELETE</button>
+                            </form>
+                        </a>
+                    </div>
+                    <% } else { %>
+                    <div class="cantidades">
+                        <form action="/carrito/addToCart" method="POST" style="display: inline-bock">
+                            <label for="quantity" style="font-size: 14px;" class="cantidad">Cantidad</label>
+                            <input type="number" style="font-size: 14px;" id="quantity" name="quantity" value="1">
+                            <p class="error">
+                                <%= typeof errors == 'undefined' ? '' : errors.quantity ? errors.quantity.msg : '' %>
+                            </p>
+                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <button style="display: inline-block; width: 100%;" type="submit"
+                                class="mt-4 buy-now-button">AGREGAR AL CARRITO</button>
+                        </form>
+                    </div>
+                    <hr>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <%  comentarios.forEach(comentarios => { %>
+    <div class="comentariocontainer">
+        <div class="imgUser">
+            <img src="/img/users/<%= comentarios.user.image %>" alt="imagenPerfil" class="fotoProductoDetalle"></img>
+        </div>
+        <div class="commentData">
+            <!-- <h1>NUMERO DE COMENTARIO: #<%# comentarios.id %> </h1> -->
+            <div class="dataUser">
+                <h2 class="commentUsername"><%= comentarios.user.username %> </h2>
+            </div>
+            <div>
+                <h5 class="createdAt"><%= comentarios.createdAt %></h5>
+            </div>
+            <p class="commentText"><%= comentarios.name %> </p>
+
+        </div>
+    </div>
+
+    <% }) %>
+
+    <%- include('partial/footer') %>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>		
+	<script src= "/js/sweetAlerts.js"></script>
+
+</body>
+
+</html>

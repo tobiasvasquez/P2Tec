@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partial/head', {title: "Lista"}) %>
+<% 
+function round(val) {
+  return Math.round(val*100)/100;
+} 
+%>
+<!-- <link rel="stylesheet" href="/css/prueba.css"> -->
+<link rel="stylesheet" href="/css/lista.css">
+
+<body>
+    <%- include('./partial/header') %>
+    <div class="encierro">
+        <div class="centradoLista row wrap nostyle">
+            <aside class="a">
+                <h1>Categorias</h1>
+                <ul class="brands">
+                    <h4>Tipos de marcas</h4>
+                    <div class="prod">
+
+                        <a href="/lista/aorus"><label class="pointer" for="Aorus">Aorus</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/asus"><label class="pointer" for="Asus">Asus</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/adata"><label class="pointer" for="AData">Adata</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/seagate"><label class="pointer" for="Seagate">Seagate</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/ballistix"><label class="pointer" for="Ballistix">Ballistix</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/amd"><label class="pointer" for="AMD">AMD</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/samsung"><label class="pointer" for="Samsung">Samsung</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/hyperx"><label class="pointer" for="hyperx">HyperX</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/coolermaster"><label class="pointer" for="coolermaster">Cooler Master</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/alienware"><label class="pointer" for="alienware">Alienware</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/corsair"><label class="pointer" for="corsair">Corsair</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/logitech"><label class="pointer" for="logitech">Logitech</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/aoc"><label class="pointer" for="aoc">AOC</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/kingston"><label class="pointer" for="kingston">Kingston</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/intel"><label class="pointer" for="intel">Intel</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/tenda"><label class="pointer" for="tenda">Tenda</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/hp"><label class="pointer" for="hp">HP</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+                        <a href="/lista/marvo"><label class="pointer" for="marvo">Marvo</label> <a/>
+                        <br>
+                    </div>
+                    <div class="prod">
+                        <a href="/lista/trust"><label class="pointer" for="trust">Trust</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/razer"><label class="pointer" for="razer">Razer</label> </a>
+                        <br>
+                    </div>
+                </ul>
+                <ul class="products">
+                    <h4>Tipos de Categorias</h4>
+                    <div class="prod">
+
+                        <a href="/lista/Componentes"><label class="pointer" for="auriculares">Componentes</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/Notebooks"><label class="pointer" for="teclados">Notebooks</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/Monitores"><label class="pointer" for="monitores">Monitores</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/Perifericos"><label class="pointer" for="mouse">Perifericos</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/Notebooks"><label class="pointer" for="notebook">Notebook</label> </a>
+                        <br>
+                    </div>
+                </ul>
+                <ul class="products">
+                    <h4>Tipos de PC</h4>
+                    <div class="prod">
+
+                        <a href="/lista/PcOffice"> <label class="pointer" for="pcHomeOffice">PC Home Office</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/PcStreamer"><label class="pointer" for="pcStreamer">PC Steamer</label> </a>
+                        <br>
+                    </div>
+                    <div class="prod">
+
+                        <a href="/lista/PcDiseno"><label class="pointer" for="pcDiseno">PC Diseño</label> </a>
+                        <br>
+                    </div>
+
+                </ul>
+            </aside>
+            <div class="prodList">
+                <%  data.forEach(p => { %>
+
+            
+                    <div class="producto productoTest producto-<%- p.id %>">
+                        <a href="/lista/detail/<%- p.id %>">
+                            <img src="<%- "/img/" + p.image %>" alt="" class="fotoProducto">
+                        </a>
+                        <div class="descripcionesTest">
+                            <a href="/lista/detail/<%- p.id %>">
+                                <h3 class="nombreProducto"><%- p.name %></h3>
+                            </a>
+                            <p class="detalleProducto"><%- p.descripcion %></p>
+
+                            <% if (typeof user !== 'undefined' && user.rol === 1) {%>
+                                <div class="editarproductoslista">
+                                            <form action="/lista/edit/<%= p.id %>" method="GET">
+                                                <button class="delete" type="submit" class="mt-4EDIT-now-button">EDIT</button>
+                                            </form>
+                                            <form id= "trash" action="/lista/delete/<%= p.id %>" method="POST">
+                                                <button class="delete" type="submit" class="mt-4DELETE-now-button">DELETE</button>
+                                            </form>
+                                </div>       
+                                <% } else { %>
+                                    <div>
+                                <form action="/carrito/addToCart" method="POST" style="display: inline-bock">
+                                    <!-- <label for="quantity" style="font-size: 14px; width: 100%;">Cantidad</label> -->
+                                    <input type="hidden" style="font-size: 14px;" id="quantity" name="quantity" value="1">
+                                    <p class="error">
+                                        <%= typeof errors == 'undefined' ? '' : errors.quantity ? errors.quantity.msg : '' %>
+                                    </p>
+                                    <input type="hidden" name="productId" value="<%= p.id %>">
+                                    <div class="buyOptions">
+                                      
+                                        <button type="submit" class="mt-4 buy-now-button">COMPRAR</button>
+                                    </div>
+                                </form>
+
+                                <form action="/carrito/addCart" method="POST" style="display: inline-bock">
+                                    <!-- <label for="quantity" style="font-size: 14px; width: 100%;">Cantidad</label> -->
+                                    <input type="hidden" style="font-size: 14px;" id="quantity" name="quantity" value="1">
+                                    <input type="hidden" name="productId" value="<%= p.id %>">
+                                    <div class="buyOptions">
+                                        <button type="submit" class="mt-4 buy-now-button">AGREGAR AL CARRITO</button>
+                                       
+                                    </div>
+                                </form>
+                            </div>
+                                <% } %>
+                            <h2 class="precioProducto">ARS$ <%- round(p.price) %></h2>
+                        </div>
+                    </div>
+                    <hr>
+                
+
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partial/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>		
+	<script src= "/js/sweetAlerts.js"></script>
+
+</body>
+
+</html>

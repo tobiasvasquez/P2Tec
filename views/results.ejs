@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partial/head', {title: 'Resultados de tu búsqueda'}) %>
+<% 
+function round(val) {
+  return Math.round(val*100)/100;
+} 
+%>
+<body>
+	<!-- Header -->
+	<%- include('partial/header', {user}) %>
+	<!-- /Header -->
+	<div class="encierro"> 
+	<!-- Banner -->
+	<div class="banner"></div>
+	<!-- /Banner -->
+	<div class="row">
+		<h2 class="products-title">Resultados de la búsqueda: <%= busqueda %> </h2>
+	</div>
+	<!-- todos los productos -->
+	<div class="container products-wrapper">
+		<div class="row wrap">
+			<% if (products.length > 0) { %>
+				<div class="row wrap nostyle">
+					<%  products.forEach(p => { %>
+					<a href="/lista/detail/<%- p.id %>">
+						<div class="producto producto-<%- p.id %>">
+							<img src="<%- "/img/" + p.image %>" alt="" class="fotoProducto">
+							<div class="descripciones">
+								<h3 class="nombreProducto"><%- p.name %></h3>
+								<p class="detalleProducto"><%- p.descripcion %></p>
+								<h2 class="precioProducto">ARS <%- round(p.price) %></h2>
+							</div>
+						</div>
+					</a>
+					<% }) %>
+				</div>
+				
+				<% } else { %>
+					<div class="col-12">
+						<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
+					</div>
+				<% } %>
+
+		</div>
+	</div>
+	<!-- /todos los productos -->
+</div>
+	<!-- footer -->
+	<%- include('partial/footer') %>
+		
+	<!-- /footer -->
+</body>	
+</html>

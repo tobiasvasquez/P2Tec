@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('./partial/head', {title: 'BuyDetail'}) %>
+<link rel="stylesheet" href="/css/buyDetail.css">
+
+<body>
+   <!-- Header -->
+   <%- include('./partial/header', {user}) %>
+   <!-- /Header -->
+
+   <div class="container products-wrapper">
+      <div class="">
+         <div class="">
+            <h1 class="products-title">Detalle de compra</h1>
+         </div>
+      </div>
+            <div class="orderInfo">
+               <div class="buyDetailInfo" style="font-size: 14px;">
+                  <div class="detailProducts"> 
+                     <h2 class="product-detail-title">
+                        <strong>Fecha de compra:</strong>
+                        <p><%= new Date(cart.createdAt).toLocaleDateString()%></p>
+                     </h2>
+                     <p style="text-align: center; font-size: 22px;">Total: $<%= cart.total %></p>
+                     <p style="text-align: center;">Productos:</p>
+                     <ul>
+                        <% cart.items.forEach(item => { %>
+                        <li>
+                           <p> <%= item.product.name %> x<%= item.quantity %></p>
+                        </li>
+                        <% }) %>
+                     </ul>
+                     <br>
+                     <h1 style="text-align: center; padding-bottom: 2%;">Numero de orden: #<%= cart.orderNumber %></h1>
+
+                      
+                   
+                  </div>
+               </div>
+      </div>
+   </div>
+
+   <!-- footer -->
+   <%- include('partial/footer') %>
+   <!-- /footer -->
+</body>
+
+</html>

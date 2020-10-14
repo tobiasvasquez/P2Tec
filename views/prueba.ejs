@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partial/head', {title: "Prueba"}) %>
+<% 
+function round(val) {
+  return Math.round(val*100)/100;
+} 
+%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link rel="stylesheet" href="/css/prueba.css">
+
+<body>
+    <%- include('./partial/header') %>
+    
+    <div class="encierro">
+
+     <H1>BOTON DE PAGO</H1>
+     <form action="/procesar-pago" method="POST">
+        <script
+          src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+          data-public-key="TEST-e9893064-901d-4eee-9097-88c7e7b85096"
+          data-transaction-amount="100.00">
+        </script>
+      </form>
+
+    <%- include('partial/footer') %>
+
+</body>
+
+</html>

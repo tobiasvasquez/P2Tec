@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partial/head', {title: 'Reseña'}) %>
+<link rel="stylesheet" href="/css/register.css">
+
+<body>
+    <!-- Header -->
+    <%- include('./partial/header') %>
+    <div class="encierro">
+        <div class="loginContainer row no-wrap">
+            <main class="login-publi row no-wrap">
+                <div class="loginCompleto">
+                   
+                    
+                    <div class="form-container">
+                        <div class="loginTitulo">Reseña del producto</div>
+                        <form class="loginForm" action="/perfil/resenaupdate" method="POST" autocomplete="off">
+                           
+                            <div class="field-group">
+                                <div class="username">
+                                    <label for="name" class="form-label">Comentario del producto:</label>
+                                    <br><br><br>
+									<input  class="name" type="text" id="name" name="name" placeholder="Buen producto" class="form-input"
+                                </div>
+                                <div class="field-group">
+                                    <div class="username">
+                                        <label for="name" class="form-label">Usuario: <%= user.username %></label>
+                                    </div>
+                                <div class="password">
+                                    <label for="productId" class="form-label">Producto:</label>
+                                    <select name="productId" id="productId" class="form-input">
+                                        <option value="">Elegí</option>
+                                        <% item.forEach(item => {  %>
+                                        <option value="<%=item.product.id%>"> <%=item.product.name%> </option>
+                                        <%})%>
+                                    </select>
+                                </div>
+                                <div class="col2">
+									<button type="submit" class="buy-now-button">Enviar</button>
+								</div>
+                            </div>
+                        </form>
+                        <div class="logoFormulario">
+                            <img src="/img/numero.png" alt="logopP2Tec">
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+
+
+    <%- include('partial/footer') %>
+
+
+</body>
+
+</html>
